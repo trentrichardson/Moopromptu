@@ -7,7 +7,7 @@ license: Dual licensed under the MIT and GPL licenses.
 authors:
 - Trent Richardson
 
-provides: [Element, Elements, $, $$, Impromptu]
+provides: [Impromptu]
 
 requires:
 - Core
