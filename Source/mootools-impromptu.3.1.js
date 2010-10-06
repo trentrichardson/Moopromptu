@@ -21,6 +21,7 @@ requires:
 
 provides: [Impromptu]
 
+...
 */
 
 var Impromptu = new Class({
