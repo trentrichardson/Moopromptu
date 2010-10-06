@@ -19,8 +19,7 @@ requires:
 - FX.Tween
 - FX.Morph
 
-provides: 
-- Impromptu
+provides: [Element, Elements, $, $$, Impromptu]
 
 ...
 */
