@@ -34,7 +34,8 @@ Screenshots
 Arbitrary section
 -----------------
 
-Functionality of Moopromptu is identical to jQuery Impromptu.  All options are implemented.  See the documentation for all options: http://trentrichardson.com/Impromptu/index.php
+Functionality of Moopromptu is identical to jQuery Impromptu.  All options are implemented.  See the documentation for all options: 
 
-
+- [Documentation](http://trentrichardson.com/Impromptu/index.php)
+- [Author](http://trentrichardson.com)
 
