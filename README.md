@@ -3,7 +3,7 @@ Plugin Name
 
 Mootools version of Impromptu for modal like prompts and forms.
 
-![Screenshot](http://trentrichardson.com/wp-content/uploads/2009/12/Impromptu_theme.png)
+![Screenshot](http://trentrichardson.com/wp-content/uploads/2010/04/Impromptu-css3-red-button.jpg)
 
 How to use
 ----------
@@ -27,8 +27,9 @@ Moopromptu is also tied to Element, so the msg will be pulled from the html prop
 Screenshots
 -----------
 
-![Screenshot 1](http://trentrichardson.com/wp-content/uploads/2009/12/Impromptu_theme.png)
-![Screenshot 2](http://trentrichardson.com/wp-content/uploads/2010/04/Impromptu-css3-red-button.jpg)
+![Screenshot 1](http://trentrichardson.com/wp-content/uploads/2010/04/Impromptu-css3-red-button.jpg)
+
+![Screenshot 2](http://trentrichardson.com/wp-content/uploads/2009/12/Impromptu_theme.png)
 
 Arbitrary section
 -----------------
