@@ -3,11 +3,11 @@
 description: Mootools version of Impromptu for modal like prompts and forms.
 
 license: Dual licensed under the MIT and GPL licenses.
-- http://trentrichardson.com/Impromptu/GPL-LICENSE.txt
-- http://trentrichardson.com/Impromptu/MIT-LICENSE.txt
 
 authors:
 - Trent Richardson
+
+provides: [Element, Elements, $, $$, Impromptu]
 
 requires:
 - Core
@@ -18,8 +18,6 @@ requires:
 - FX
 - FX.Tween
 - FX.Morph
-
-provides: [Element, Elements, $, $$, Impromptu]
 
 ...
 */
