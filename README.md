@@ -36,6 +36,6 @@ Arbitrary section
 
 Functionality of Moopromptu is identical to jQuery Impromptu.  All options are implemented.  See the documentation for all options: 
 
-- [Documentation](http://trentrichardson.com/Impromptu/index.php)
-- [Author](http://trentrichardson.com)
+- [Documentation and Examples](http://trentrichardson.com/Impromptu/index.php)
+- [Trent Richardson Blog](http://trentrichardson.com)
 
