@@ -11,13 +11,6 @@ provides: [Impromptu]
 
 requires:
 - Core
-- Browser
-- Element
-- Element.Styles
-- Element.Events
-- FX
-- FX.Tween
-- FX.Morph
 
 ...
 */
@@ -27,11 +20,13 @@ var Impromptu = new Class({
 		return this;
 	},
 	
+	version: 3.1,	
+	
 	show: function(message, options){
-		options = $extend(this.defaults, options);
+		options = Object.append(this.defaults, options);
 		this.currentPrefix = options.prefix;
 		var t = this;
-		var ie6 = (Browser.Engine.trident && Browser.Engine.version < 7);
+		var ie6 = Browser.ie6;
 		
 		options.classes = options.classes.trim();
 		if(options.classes != '')
@@ -73,21 +68,20 @@ var Impromptu = new Class({
 			 	}
 		 	};
 		}
-		message = new Hash(message);
 
 		//build the states
 		var states = "";
 		
-		message.each(function(stateobj,statename){
-			stateobj = $extend({ 
-					buttons: ($defined(stateobj.buttons)? null : t.defaults.state), 
-					focus: ($defined(stateobj.focus)? null : t.defaults.focus), 
-					submit: ($defined(stateobj.submit)? null : t.defaults.submit) 
+		Object.each(message, function(stateobj,statename){
+			stateobj = Object.append({ 
+					buttons: ((stateobj.buttons != undefined)? null : t.defaults.state), 
+					focus: ((stateobj.focus != undefined)? null : t.defaults.focus), 
+					submit: ((stateobj.submit != undefined)? null : t.defaults.submit) 
 				}, stateobj);
 			message[statename] = stateobj;
 			
 			states += '<div id="'+ options.prefix +'_state_'+ statename +'" class="'+ options.prefix + '_state" style="display:none;"><div class="'+ options.prefix +'message">' + stateobj.html +'</div><div class="'+ options.prefix +'buttons">';
-			new Hash(stateobj.buttons).each(function(v, k){
+			Object.each(stateobj.buttons, function(v, k){
 				if(typeof v == 'object')
 					states += '<button name="' + options.prefix + '_' + statename + '_button' + v.title.replace(/[^a-z0-9]+/gi,'') + '" id="' + options.prefix + '_' + statename + '_button' + v.title.replace(/[^a-z0-9]+/gi,'') + '" value="' + v.value + '">' + v.title + '</button>';
 				else states += '<button name="' + options.prefix + '_' + statename + '_button' + k + '" id="' + options.prefix +	'_' + statename + '_button' + k + '" value="' + v + '">' + k + '</button>';
@@ -103,7 +97,7 @@ var Impromptu = new Class({
 		});
 		
 		//Events
-		message.each(function(stateobj, statename){
+		Object.each(message, function(stateobj, statename){
 			var $state = $(options.prefix +'_state_'+ statename);
 			
 			$state.getElements('.'+ options.prefix +'buttons button').each(function(btn){
@@ -120,7 +114,7 @@ var Impromptu = new Class({
 					if(typeof clicked == 'object')
 						clicked = clicked.value;
 					
-					var forminputs = new Hash({});
+					var forminputs = {};
 					
 					//collect all form element values from all states
 					$(options.prefix +'states').getElements('input[type=text], input:checked, select, textarea').each(function(input, i){
@@ -339,11 +333,11 @@ var Impromptu = new Class({
 	currentPrefix: '',
 	
 	setDefaults: function(o) {
-		$extend(this.defaults, o);
+		Object.append(this.defaults, o);
 	},
 	
 	setStateDefaults: function(o) {
-		$extend(this.defaults.state, o);
+		Object.append(this.defaults.state, o);
 	},
 	
 	getStateContent: function(state) {
