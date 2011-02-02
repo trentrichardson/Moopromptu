@@ -73,7 +73,7 @@ var Impromptu = new Class({
 		var states = "";
 		
 		Object.each(message, function(stateobj,statename){
-			stateobj = Object.append({ 
+			stateobj = Object.merge({ 
 					buttons: ((stateobj.buttons != undefined)? null : t.defaults.state), 
 					focus: ((stateobj.focus != undefined)? null : t.defaults.focus), 
 					submit: ((stateobj.submit != undefined)? null : t.defaults.submit) 
@@ -98,9 +98,10 @@ var Impromptu = new Class({
 		
 		//Events
 		Object.each(message, function(stateobj, statename){
-			var $state = $(options.prefix +'_state_'+ statename);
-			
-			$state.getElements('.'+ options.prefix +'buttons button').each(function(btn){
+			var $state = $(options.prefix +'_state_'+ statename),
+				btns = $state.getElements('.'+ options.prefix +'buttons button');
+			if(btns.length){
+			btns.each(function(btn){
 				btn.addEvent('click',function(){				
 					var msg = $state.getElement('.'+ options.prefix +'message');					
 					var clicked = stateobj.buttons[btn.get('text')];
@@ -117,7 +118,7 @@ var Impromptu = new Class({
 					var forminputs = {};
 					
 					//collect all form element values from all states
-					$(options.prefix +'states').getElements('input[type=text], input:checked, select, textarea').each(function(input, i){
+					$(options.prefix +'states').getElements('input[type=text], input[type=hidden], input:checked, select, textarea').each(function(input, i){
 					
 						var inputName = input.get('name');
 						var inputValue = input.get('value');
@@ -137,7 +138,8 @@ var Impromptu = new Class({
 					}
 				});
 			});
-			$state.getElements('.'+ options.prefix +'buttons button')[stateobj.focus].addClass(options.prefix +'defaultbutton');
+			btns[stateobj.focus].addClass(options.prefix +'defaultbutton');
+			}
 		});
 		
 		var ie6scroll = function(){
@@ -392,7 +394,8 @@ var Impromptu = new Class({
 					toState.replaces(toStateWrap);
 					currState.replaces(currStateWrap);
 					
-					toState.getElement('.'+ t_currentPrefix +'defaultbutton').focus();
+					var focusbtn = toState.getElement('.'+ t_currentPrefix +'defaultbutton');
+					if(focusbtn) focusbtn.focus();
 					
 					if (typeof callback == 'function')
 						callback();
