@@ -422,7 +422,7 @@ var Impromptu = new Class({
 	},
 	
 	close: function() {
-				
+			
 		new Fx.Tween($(this.currentPrefix +'box'),{
 				duration: 'short',
 				onComplete: function(){ 
